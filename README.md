@@ -17,8 +17,8 @@ and that is akin to trying to define the value of PI to be 3.
 `*` (dereference), `!` (bitwise/logical not)...
 
 ### C
-I explicitly follow the (Linux kernel coding style)
-[https://www.kernel.org/doc/html/v4.10/process/coding-style.html].
+I explicitly follow the [Linux kernel coding 
+style](https://www.kernel.org/doc/html/v4.10/process/coding-style.html).
 
 ### Rust
 I always format my code with `cargo fmt`. Also get clippy installed.
