@@ -128,10 +128,10 @@ Python → `snake_case`.
 ---
 
 ### Commit Messages
-Commit messages should include a **keyword** or the name of the
-**module/library/feature** that modified such as `refactor`, `feat`, `doc`,
-`chore`, or `hotfix` to indicate the purpose of the commit. These keywords can
-be **combined** when necessary.
+Commit messages should include a **keyword**, such as `refactor`, `feat`,
+`doc`, `chore`, `hotfix`, etc., or the name of the **module/library/feature**
+that was modified, to indicate the purpose of the commit. These keywords can be
+combined when necessary.
 
 You may also split commits using the **`keyword.<patch/commit version>`**
 format to indicate incremental changes within a module.
