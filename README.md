@@ -69,7 +69,7 @@ For example:
 ```jsx
 function EnvironmentControl() {
     return (
-        <div className={styles['control'] /* Use single quote in embeded JS */}>
+        <div className={styles['control'] /* Use single quote in embedded JS */}>
             <DropdownMenu title="environment">
                 <div>
                     <input placeholder="drone count" type="number"/>
