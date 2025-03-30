@@ -7,10 +7,19 @@ To standardize the style of my repositories, I created this repository to
 specify the style I follow, which linters should be used, and other related
 guidelines.
 
+### Why?
+***"many eyes"***
+- I want to read your code.
+- I want you to read my code.
+- I want you to fix my bugs.
+- I want you to change my code.
+- I want to build on your code.
+
+
 ## Key Points
 
 1. The maximum line length is **80 columns**, which is a strongly preferred
-limit.
+limit. It is best not to exceed **79 columns** of code.
 2. Indentation is **4 spaces** in all languages **except C**, including
 **TS/JS/CSS**. Some heretical movements attempt to reduce it to **2 spaces**,
 which is akin to defining **π as 3**. Use tabs in C which are 8 character wide.
@@ -28,7 +37,13 @@ Follow the [Linux kernel coding style](https://www.kernel.org/doc/html/v4.10/pro
 Use `cargo fmt` and have `clippy` installed.
 
 ### Python
-Always apply `pyflakes` and `pylint` recommendations.
+Run `pylint` over your code. Always apply `pyflakes` and `pylint`
+recommendations.
+
+Double quotes for text.\
+Single quotes for anything that behaves like an identifier.\
+Double quoted raw string literals for regexps.\
+Tripled double quotes for docstrings.
 
 ### JS/TS
 Even though it is not mandatory in JavaScript, placing a **semicolon** at the
@@ -38,9 +53,40 @@ updates may break the code by changing statement and expression rules.
 Using `var` is **not recommended**. Prefer `let` or `const` whenever possible
 to ensure block scoping and prevent unexpected behavior due to hoisting.
 
+Avoid redundant backticks. Use ' (single quotes) whenever possible. Reserve
+backticks for format strings only.
+
+`"` (double quotes) are not preferred in JavaScript. However, in HTML and JSX,
+double quotes are preferred.
+
+For example:
+```jsx
+function EnvironmentControl() {
+    return (
+        <div className={styles['control'] /* Use single quote in embeded JS */}>
+            <DropdownMenu title="environment">
+                <div>
+                    <input placeholder="drone count" type="number"/>
+                    <button>initialize environment</button>
+                </div>
+            </DropdownMenu>
+        </div>
+    );
+}
+```
+
 ### CSS/SCSS
 Group similar CSS rules **on a single line** following this order:
 `display/content > size > margin/padding > position/inset > font-related rules > flex/grid properties > interaction-related rules > animation > other`.
+
+Avoid ID selectors. ID attributes are expected to be unique across an entire
+page, which is difficult to guarantee when a page contains many components
+worked on by many different engineers. Class selectors should be preferred in
+all situations.
+
+Avoid using !important declarations. These declarations break the natural
+cascade of CSS and make it difficult to reason about and compose styles. Use
+selector specificity to override properties instead.
 
 For example:
 ```css
@@ -54,6 +100,15 @@ header {
     user-select: none; cursor: pointer;
 }
 ```
+
+### Casing
+- Use `snake_case` in C.
+- In object-oriented languages such as Python and JavaScript, **always** use
+`PascalCase` for class names. No variables, functions, modules, etc., should
+be named with `PascalCase`, except for React component functions.
+- Preferred function/variable casing: JavaScript → `camelCase`,
+Python → `snake_case`.
+- Use `kebab-case` for HTML class names and IDs.
 
 ---
 
@@ -77,3 +132,16 @@ optimize(collections.0): linked_list unshift
 protocol: event payloads for command/drone command responses
 tabs: tabbed view for App element
 ```
+
+### Branches
+Code in the main branch must **always** work. ***NO*** MVP or prototype code is
+allowed in either `main` or `dev`. Breaking/prototype commits *should* be
+pushed to a separate branch related to the update and merged into the `dev`
+branch once the feature or refactor is stabilized. Only a fully functional and
+stable version in `dev` can be merged into `main`.
+
+
+## References
+- [Google styling guide](https://google.github.io/styleguide/)
+- [Linux kernel coding style](https://www.kernel.org/doc/html/v4.10/process/coding-style.html).
+- [Kernel process/coding-style.rst](http://www.kroah.com/linux/talks/ols_2002_kernel_codingstyle_talk/html/).
