@@ -95,8 +95,12 @@ cascade of CSS and make it difficult to reason about and compose styles. Use
 selector specificity to override properties instead.
 
 *DO NOT* break responsiveness. Build the site from the ground up with a
-responsive design. Use `rem` and `em` instead of `px` to maintain
-responsiveness across devices with different font sizes.
+responsive design.  It is extremely difficult to add responsiveness to a
+[non-responsive site](https://github.com/user-attachments/assets/6d1b73ba-0a31-449b-830e-ed10e10505b4)
+after it's already been built.
+
+Use `rem` and `em` instead of `px` to maintain responsiveness across devices
+with different font sizes.
 
 Here is an example of my controversial choice of "grouping similar rules in a
 single line":
