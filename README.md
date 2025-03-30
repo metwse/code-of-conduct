@@ -15,6 +15,8 @@ guidelines.
 - I want you to change my code.
 - I want to build on your code.
 
+*You may encounter a closed pull request or `git reset --hard` if these
+conventions are violated.*
 
 ## Key Points
 
@@ -27,6 +29,10 @@ which is akin to defining **π as 3**. Use tabs in C which are 8 character wide.
 `-`, `<`, `>`, `*`, `/`). However, **no space** should follow **unary
 operators**: `&` (reference), `*` (dereference), `!` (bitwise/logical NOT),
 etc.
+4. `!important`: Get a decent file editor and do not leave trailing whitespace
+at the end of lines.
+5. Global items need to have descriptive names, but do not use global if you
+do not really need them.
 
 ---
 
@@ -88,7 +94,12 @@ Avoid using !important declarations. These declarations break the natural
 cascade of CSS and make it difficult to reason about and compose styles. Use
 selector specificity to override properties instead.
 
-For example:
+*DO NOT* break responsiveness. Build the site from the ground up with a
+responsive design. Use `rem` and `em` instead of `px` to maintain
+responsiveness across devices with different font sizes.
+
+Here is an example of my controversial choice of "grouping similar rules in a
+single line":
 ```css
 header {
     display: flex;
@@ -124,22 +135,24 @@ format to indicate incremental changes within a module.
 #### Examples
 ```text
 chore(refactor): dead code cleanup
-minor: padding adjustments # fix typos
+homepage: padding adjustments in footer / fix typos
 feat(components/DropdownMenu): expand all method
 optimize(collections/binary_heap): heap_push function
 optimize(collections.1): bstree push/delete functions
 optimize(collections.0): linked_list unshift
 protocol: event payloads for command/drone command responses
 tabs: tabbed view for App element
+minor: update copyright year
 ```
 
 ### Branches
-Code in the main branch must **always** work. ***NO*** MVP or prototype code is
-allowed in either `main` or `dev`. Breaking/prototype commits *should* be
-pushed to a separate branch related to the update and merged into the `dev`
-branch once the feature or refactor is stabilized. Only a fully functional and
-stable version in `dev` can be merged into `main`.
+Code in the main branch must **always** work properly. ***NO*** MVP or
+prototype code is allowed in either `main` or `dev`. Breaking/prototype commits
+*should* be pushed to a separate branch related to the update and merged into
+the `dev` branch once the feature or refactor is stabilized. Only a fully
+functional and stable version in `dev` can be merged into `main`.
 
+---
 
 ## References
 - [Google styling guide](https://google.github.io/styleguide/)
